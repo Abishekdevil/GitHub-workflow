@@ -14,14 +14,18 @@ function getRandomWord() {
 
   document.getElementById("category-name").textContent = category;
 
-  // Check if item has a hint (in case of object), otherwise skip
   if (typeof item === "object" && item.word && item.hint) {
     document.getElementById("hint-text").textContent = item.hint;
     return item.word;
   } else {
     document.getElementById("hint-text").textContent = "—";
-    return item; // It's a plain string
+    return item;
   }
+}
+
+function updateLivesDisplay() {
+  const hearts = "❤️".repeat(lives); // Show only remaining hearts
+  document.getElementById("lives").textContent = hearts;
 }
 
 function displayWord() {
@@ -30,8 +34,12 @@ function displayWord() {
 
   chosenWord.split("").forEach((letter) => {
     const span = document.createElement("span");
-    span.textContent = guessedLetters.includes(letter) ? letter : "_";
-    if (guessedLetters.includes(letter)) span.classList.add("fade-in");
+    if (guessedLetters.includes(letter)) {
+      span.textContent = letter;
+      span.classList.add("found-letter", "fade-in");
+    } else {
+      span.textContent = "_";
+    }
     wordContainer.appendChild(span);
   });
 }
@@ -54,7 +62,7 @@ function handleGuess(letter, button) {
 
   if (!chosenWord.includes(letter)) {
     lives--;
-    document.getElementById("lives").textContent = lives;
+    updateLivesDisplay();
   }
 
   displayWord();
@@ -71,10 +79,12 @@ function checkGameStatus() {
     document.getElementById("message").textContent = "🎉 You Won!";
     clearInterval(timerInterval);
     disableAllButtons();
+    document.getElementById("restart-container").style.display = "block";
   } else if (lives === 0) {
     document.getElementById("message").textContent = `💀 You Lost! Word was: ${chosenWord}`;
     clearInterval(timerInterval);
     disableAllButtons();
+    document.getElementById("restart-container").style.display = "block";
   }
 }
 
@@ -93,6 +103,7 @@ function startTimer() {
       clearInterval(timerInterval);
       document.getElementById("message").textContent = `⏰ Time's up! Word was: ${chosenWord}`;
       disableAllButtons();
+      document.getElementById("restart-container").style.display = "block";
     }
   }, 1000);
 }
@@ -101,12 +112,15 @@ export function startGame() {
   lives = 6;
   guessedLetters = [];
   chosenWord = getRandomWord().toLowerCase();
-  document.getElementById("lives").textContent = lives;
   document.getElementById("message").textContent = "";
   displayWord();
   createKeyboard();
   clearInterval(timerInterval);
   startTimer();
+  updateLivesDisplay();
+
+  // Hide restart button on new game
+  document.getElementById("restart-container").style.display = "none";
 }
 
 window.startGame = startGame;

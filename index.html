@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mystery Word Challenge</title>
+
+  <!-- Google Fonts for Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,10 +16,14 @@
     <p>Category: <span id="category-name"></span></p>
     <p>Hint: <span id="hint-text"></span></p>
     <div id="word" class="word-display"></div>
-    <p>Lives: <span id="lives"></span> | Time Left: <span id="time">60</span>s</p>
+    <p><span id="lives"></span> | ⏳ <span id="time">60</span>s</p>
     <div id="keyboard" class="keyboard"></div>
     <p id="message"></p>
-    <button onclick="startGame()">🔄 Restart</button>
+
+    <!-- Restart button hidden by default -->
+    <div id="restart-container" style="display: none;">
+      <button onclick="startGame()">🔄 Restart</button>
+    </div>
   </div>
   <script type="module" src="script.js"></script>
 </body>
