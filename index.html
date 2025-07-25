@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mystery Word Challenge</title>
+  <title>Word&Seek</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Mystery Word Challenge</h1>
+    <h1>Word&Seek</h1>
     <p>Category: <span id="category-name"></span></p>
-    <p>Hint: <span id="hint-text"></span></p>
     <div id="word" class="word-display"></div>
     <p>Lives: <span id="lives"></span> | Time Left: <span id="time">60</span>s</p>
     <div id="keyboard" class="keyboard"></div>
     <p id="message"></p>
-    <button onclick="startGame()">🔄 Restart</button>
+    <button id="restart-btn" onclick="startGame()">🔄 Restart</button>
   </div>
   <script type="module" src="script.js"></script>
 </body>

@@ -14,14 +14,7 @@ function getRandomWord() {
 
   document.getElementById("category-name").textContent = category;
 
-  // Check if item has a hint (in case of object), otherwise skip
-  if (typeof item === "object" && item.word && item.hint) {
-    document.getElementById("hint-text").textContent = item.hint;
-    return item.word;
-  } else {
-    document.getElementById("hint-text").textContent = "—";
-    return item; // It's a plain string
-  }
+  return typeof item === "object" && item.word ? item.word : item;
 }
 
 function displayWord() {
@@ -71,10 +64,12 @@ function checkGameStatus() {
     document.getElementById("message").textContent = "🎉 You Won!";
     clearInterval(timerInterval);
     disableAllButtons();
+    document.getElementById("restart-btn").style.display = "inline-block";
   } else if (lives === 0) {
     document.getElementById("message").textContent = `💀 You Lost! Word was: ${chosenWord}`;
     clearInterval(timerInterval);
     disableAllButtons();
+    document.getElementById("restart-btn").style.display = "inline-block";
   }
 }
 
@@ -93,16 +88,35 @@ function startTimer() {
       clearInterval(timerInterval);
       document.getElementById("message").textContent = `⏰ Time's up! Word was: ${chosenWord}`;
       disableAllButtons();
+      document.getElementById("restart-btn").style.display = "inline-block";
     }
   }, 1000);
 }
 
 export function startGame() {
-  lives = 6;
+  lives = 5;
+
   guessedLetters = [];
   chosenWord = getRandomWord().toLowerCase();
+
+  const revealCount =
+    chosenWord.length < 8 ? 1 :
+    chosenWord.length <= 12 ? 2 : 3;
+
+  const revealedIndices = new Set();
+
+  while (revealedIndices.size < revealCount) {
+    const randomIndex = Math.floor(Math.random() * chosenWord.length);
+    revealedIndices.add(randomIndex);
+  }
+
+  revealedIndices.forEach((i) => {
+    guessedLetters.push(chosenWord[i]);
+  });
+
   document.getElementById("lives").textContent = lives;
   document.getElementById("message").textContent = "";
+  document.getElementById("restart-btn").style.display = "none";
   displayWord();
   createKeyboard();
   clearInterval(timerInterval);
