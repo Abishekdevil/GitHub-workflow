@@ -125,3 +125,17 @@ export function startGame() {
 
 window.startGame = startGame;
 startGame();
+
+document.addEventListener("keydown", (e) => {
+  const key = e.key.toLowerCase();
+  if (/^[a-z]$/.test(key)) {
+    const buttons = document.querySelectorAll("#keyboard button");
+    for (const btn of buttons) {
+      if (btn.textContent === key && !btn.disabled) {
+        btn.click(); 
+        break;
+      }
+    }
+  }
+});
+
