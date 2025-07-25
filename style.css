@@ -58,3 +58,7 @@ body {
     opacity: 1;
   }
 }
+
+#restart-btn {
+  display: none;
+}
