@@ -1,5 +1,11 @@
 import { wordBank } from './wordbank.js';
 
+// 🎵 Load Sound Effects
+const winSound = new Audio('./sounds/win.mp3');
+const loseSound = new Audio('./sounds/lose.mp3');
+const correctSound = new Audio('./sounds/correct.mp3');
+const wrongSound = new Audio('./sounds/wrong.mp3');
+
 let chosenWord = "";
 let lives = 6;
 let guessedLetters = [];
@@ -48,6 +54,9 @@ function handleGuess(letter, button) {
   if (!chosenWord.includes(letter)) {
     lives--;
     document.getElementById("lives").textContent = lives;
+    wrongSound.play(); // ❌ Wrong guess
+  } else {
+    correctSound.play(); // ✅ Correct guess
   }
 
   displayWord();
@@ -63,11 +72,13 @@ function checkGameStatus() {
   if (current === chosenWord) {
     document.getElementById("message").textContent = "🎉 You Won!";
     clearInterval(timerInterval);
+    winSound.play(); // 🎉 Win sound
     disableAllButtons();
     document.getElementById("restart-btn").style.display = "inline-block";
   } else if (lives === 0) {
     document.getElementById("message").textContent = `💀 You Lost! Word was: ${chosenWord}`;
     clearInterval(timerInterval);
+    loseSound.play(); // 💀 Lose sound
     disableAllButtons();
     document.getElementById("restart-btn").style.display = "inline-block";
   }
@@ -87,6 +98,7 @@ function startTimer() {
     if (timeLeft === 0) {
       clearInterval(timerInterval);
       document.getElementById("message").textContent = `⏰ Time's up! Word was: ${chosenWord}`;
+      loseSound.play(); // 🕒 Lose by time
       disableAllButtons();
       document.getElementById("restart-btn").style.display = "inline-block";
     }
@@ -95,7 +107,6 @@ function startTimer() {
 
 export function startGame() {
   lives = 5;
-
   guessedLetters = [];
   chosenWord = getRandomWord().toLowerCase();
 
@@ -138,4 +149,3 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
-
