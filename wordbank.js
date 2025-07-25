@@ -31,28 +31,28 @@ export const wordBank = {
     "norway", "sweden", "finland", "switzerland", "indonesia", "philippines", "vietnam",
     "malaysia", "turkey", "iran", "iraq", "argentina", "chile", "colombia", "peru",
     "venezuela", "southafrica", "kenya", "nigeria", "ethiopia", "morocco", "poland",
-    "netherlands", "belgium", "austria", "czechia", "hungary", "romania", "croatia",
+    "netherlands", "belgium", "austria", "saudiarabia", "hungary", "romania", "cuba",
     "newzealand", "southkorea", "northkorea", "pakistan", "bangladesh", "srilanka"
   ],
 
-  Movies: [
+  Movies: [ 
     "inception", "avatar", "titanic", "gladiator", "joker", "interstellar", "frozen",
-    "aladdin", "dangal", "parasite", "avengers", "endgame", "ironman", "thedarkknight",
+    "aladdin", "dangal", "parasite", "avengers", "ironman", "thedarkknight",
     "thor", "blackpanther", "toystory", "ratatouille", "zootopia", "findingnemo",
-    "moana", "harrypotter", "thematrix", "dune", "godzilla", "kung fu panda",
-    "madagascar", "cars", "minions", "despicable me", "the lion king",
-    "cinderella", "jaws", "tangled", "nayakan", "anbe sivam", "mudhalvan", "sivaji",
-    "dasavatharam",  "thuppakki", "visaranai", "vikram vedha",
-    "autograph", "asuran", "sarpatta parambarai", "ghajini",
+    "moana", "harrypotter", "thematrix", "dune", "godzilla", "kungfupanda",
+    "madagascar", "cars", "minions", "despicableme", "thelionking",
+    "cinderella", "jaws", "tangled", "nayakan", "anbesivam", "mudhalvan", "sivaji",
+    "dasavatharam",  "thuppakki", "visaranai", "vikramvedha",
+    "Bahubali", "asuran", "sarpatta parambarai", "ghajini",
     "ayirathiloruvan", "superdeluxe", "sooraraipottru", "master", "kaithi", "vikram",
-    "maanadu", "don",  "ponniyinselvan", "good night",
+    "maanadu", "don",  "ponniyinselvan", "good night","",
     "love today"
   ],
 
   IconicNames: [
     "CharlieChaplin", "MarlonBrando", "Rajinikanth", "ShahRukhKhan", "AlbertEinstein",
     "MarieCurie", "APJAbdulKalam", "IsaacNewton", "NikolaTesla", "MichaelJackson",
-    "LataMangeshkar", "TheBeatles", "ARRahman", "ElvisPresley", "MSDhoni",
+    "LataMangeshkar", "QueenElizabeth", "ARRahman", "RahulDravid", "MSDhoni",
     "PVSindhu", "UsainBolt", "Ronaldo", "LionelMessi"
   ],
 
